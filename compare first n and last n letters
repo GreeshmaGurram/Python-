@@ -1,0 +1,5 @@
+word=input()
+n=int(input())
+first_n = word[0:n]
+last_n = word[len(word)-n:]
+print(first_n != last_n)
