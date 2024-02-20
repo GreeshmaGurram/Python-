@@ -1,0 +1,5 @@
+s1 = input()
+s2 = input()
+# print(s1.startswith(s2)) or
+s3 = s1[0:len(s2)]
+print(s2 == s3)
