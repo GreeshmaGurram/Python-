@@ -1,0 +1,7 @@
+vowels = ["a", "e", "i", "o", "u"]
+st = input()
+r = ""
+for i in st:
+    if i in vowels:
+        r += i
+print(r)
