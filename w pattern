@@ -1,0 +1,13 @@
+n = int(input())
+
+for i in range(n, 0, -1):
+    if i == n:
+        spaces = " "*(n-i)
+        stars = "* "*((2*n)-1)
+        spaces = " "*(n-i)
+        print(spaces + stars + spaces)
+    else:
+        spaces = " "*(n-i)
+        stars = "* "*(i)
+        space_between = " "*(2*((n-i)-1))
+        print(spaces + stars + space_between + stars + space_between)
