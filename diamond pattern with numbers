@@ -1,0 +1,12 @@
+n = int(input())
+
+for i in range(1, (2*n)):
+    r = ""
+    if i <= n:
+        for j in range(1, i+1):
+            r += (str(j) + " ")
+        print(" "*(n-i) + r + " " * (n-i))
+    else:
+        for j in range(1, (2*n)-i+1):
+            r += (str(j) + " ")
+        print(" "*(i-n) + r + " "*(i-n))
