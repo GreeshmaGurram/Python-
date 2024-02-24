@@ -1,0 +1,13 @@
+n = int(input())
+s = int(input())
+
+for i in range(n, 0, -1):
+    r = ""
+    if i == n:
+        for j in range(s, s+n):
+            r += (str(j) + " ")
+        print(r)
+    elif i == 1:
+        print(" "*(n-i) + str(s) + " " + " " * (n-i))
+    else:
+        print(" " * (n-i) + (str(s) + " ") + " " * (2*(i-2)) + str(s+i-1))
