@@ -1,0 +1,18 @@
+n = int(input())
+s = 0
+for i in range(1, n+1):
+    s += i
+    
+initial = n+1
+for i in range(n, 0, -1):
+    r = ""
+    if i == n:
+        for j in range(1, 1+n):
+            r += (str(j) + " ")
+        print(r)
+    elif i == 1:
+        print(str(s))
+    else:
+        print((str(initial) + " ") + "  "*(n-(n-i)-2) + (str(initial + i-1)))
+        initial += i
+            
