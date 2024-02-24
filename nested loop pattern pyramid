@@ -1,0 +1,9 @@
+s = int(input())
+n = int(input())
+
+for i in range(1, n+1):
+    r = ""
+    for j in range(s, s+i):
+        nums = (str(j) + " ")
+        r += nums
+    print(" "*(n-i) + r + " "*(n-i))
