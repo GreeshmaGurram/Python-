@@ -1,0 +1,6 @@
+s = input().split(" ")
+r = ""
+for i in s:
+    i = i.replace(i[0], chr(ord(i[0]) + 1), 1)
+    r += (i + " ")
+print(r)
