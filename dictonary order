@@ -1,0 +1,14 @@
+s = input()
+
+first = s
+current = ""
+for i in range(len(s)):
+    current += s[i]
+    if s[i] == " " or i == len(s)-1:
+        if current.lower() < first.lower():
+            first = current
+        current = ""
+        
+print(first)
+    
+        
