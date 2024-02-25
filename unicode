@@ -1,0 +1,12 @@
+s = input()
+
+for i in s:
+    if ord(i) in range(65, 91):
+        print(ord(i))
+        break
+
+ord() ==> find unicode(unique number which computer uses to store a value) of character
+chr() ==> find character of the given unicode
+45-57 ==> Digits(0-9)
+65-90 ==> Capital Letters(A-Z)
+97-122 ==> Small Letters(a-z)
