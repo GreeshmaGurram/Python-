@@ -1,0 +1,14 @@
+def get_sum(numbers):
+    s = 0
+    if len(numbers) == 1:
+        return numbers[0]
+    return numbers[0] + get_sum(numbers[1:])
+
+
+
+numbers = input().split()
+r = []
+for i in numbers:
+    r += [int(i)]
+sum_of_numbers = get_sum(r)
+print(sum_of_numbers)
