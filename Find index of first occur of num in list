@@ -1,0 +1,14 @@
+def get_index(numbers_list, number, current_index):
+    if current_index == len(numbers_list):
+        return -1
+    if int(numbers_list[current_index]) == number:
+        return current_index
+    return get_index(numbers_list, number, current_index+1)
+
+numbers_list = input().split()
+number = int(input())
+current_index = 0
+
+number_index = get_index(numbers_list, number, current_index)
+
+print(number_index)
