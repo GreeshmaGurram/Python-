@@ -1,0 +1,49 @@
+Manually
+l1 = input().split()
+l2 = input().split()
+l3 = input().split()
+r = [l1, l2, l3]
+
+if (r[0][0] == r[1][1] == r[2][2] == "X") or (r[0][2] == r[1][1] == r[2][0] == "X") or (r[0][0] == r[0][1] == r[0][2] == "X") or (r[1][0] == r[1][1] == r[1][2] == "X") or (r[2][0] == r[2][1] == r[2][2] == "X") or (r[0][0] == r[1][0] == r[2][0] == "X") or (r[0][1] == r[1][1] == r[2][1] == "X") or (r[0][2] == r[1][2] == r[2][2] == "X"):
+    print("Anjali Wins")
+elif (r[0][0] == r[1][1] == r[2][2] == "O") or (r[0][2] == r[1][1] == r[2][0] == "O") or (r[0][0] == r[1][0] == r[2][0] == "O") or (r[1][0] == r[1][1] == r[1][2] == "O") or (r[2][0] == r[2][1] == r[2][2] == "O") or (r[0][0] == r[1][0] == r[2][0] == "O") or (r[0][1] == r[1][1] == r[2][1] == "O") or (r[0][2] == r[1][2] == r[2][2] == "O"):
+    print("Abhinav Wins")
+else:
+    print("Tie")
+        
+or
+
+def is_match_won(moves_list):
+    diagonal_left = []
+    diagonal_right = []
+    for i in range(3):
+        row = []
+        column = []
+        for j in range(3):
+            row.append(moves_list[i][j])
+            column.append(moves_list[j][i])
+            if i == j:
+                diagonal_left.append(moves_list[j][j])
+            if i+j == 2:
+                diagonal_right.append(moves_list[i][j])
+        if (row.count("X") == 3) or (column.count("X") == 3):
+            return "X"
+        elif (row.count("O") == 3) or (column.count("O") == 3):
+            return "O"
+    if(diagonal_left.count("X") == 3) or (diagonal_right.count("X") == 3):
+        return "X"
+    elif (diagonal_left.count("O") == 3) or (diagonal_right.count("O") == 3):
+        return "O"
+
+moves_list = []
+for i in range(3):
+    moves_list.extend([input().split()])
+result = is_match_won(moves_list)
+if result == "X":
+    print("Anjali Wins")
+elif result == "O":
+    print("Abhinav Wins")
+else:
+    print("Tie")
+
+or 
