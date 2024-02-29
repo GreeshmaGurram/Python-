@@ -47,3 +47,26 @@ else:
     print("Tie")
 
 or 
+
+def is_match_won(game):
+    for i in range(3):
+        if game[i][0] == game[i][1] == game[i][2]:
+            return game[i][0]
+        elif game[0][i] == game[1][i] == game[2][i]:
+            return game[0][i]
+        elif game[1][1] == game[0][0] == game[2][2]:
+            return game[0][0]
+        elif game[0][2] == game[1][1] == game[2][0]:
+            return game[0][2]
+            
+game = []
+for i in range(3):
+    game.extend([input().split()])
+result = is_match_won(game)
+if result == "X":
+    print("Anjali Wins")
+elif result == "O":
+    print("Abhinav Wins")
+else:
+    print("Tie")
+                
