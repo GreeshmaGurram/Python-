@@ -1,0 +1,19 @@
+s1 = input()
+s2= input()
+
+if len(s1) == len(s2):
+    index = s2.find(s1[0])
+    r = ""
+    if index != -1:
+        for i in range(index, len(s1)+index):
+            if i < len(s1)-1:
+                r += s2[i]
+            else:
+                r += s2[i-len(s1)]
+        if r == s1:
+            print(index)
+    else:
+        print("No Match")
+    
+else:
+    print("No Match")
