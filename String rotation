@@ -17,3 +17,20 @@ if len(s1) == len(s2):
     
 else:
     print("No Match")
+or 
+s1 = input()
+s2 = input()
+
+start_index = s2.find(s1[0])
+no_match = True
+if len(s1) != len(s2) or start_index == -1:
+    print("No Match")
+else:
+    while no_match:
+        r = s2[start_index:]+s2[:start_index]
+        if s1 == r:
+            no_match = False
+            print(start_index)
+        else:
+            start_index += 1
+            
