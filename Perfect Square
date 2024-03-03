@@ -1,0 +1,12 @@
+m = int(input())
+n = int(input())
+out = 0
+for i in range(m, n+1):
+    r = str(i**0.5).split(".")
+    if r[1] == "0":
+        out = i
+        break
+if out == 0:
+    print("No Perfect Square")
+else:
+    print(out) 
