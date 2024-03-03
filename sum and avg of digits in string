@@ -1,0 +1,17 @@
+string = input()
+s = 0
+c = 0
+num_string = ""
+for i in string:
+    if i.isdigit():
+        num_string += i
+    else:
+        num_string += " "
+num_string = num_string.split()
+num_string = [int(i) for i in num_string]
+print(sum(num_string))
+print(round((sum(num_string)/len(num_string)), 2))
+
+            
+            
+    
