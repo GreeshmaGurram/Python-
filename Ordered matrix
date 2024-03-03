@@ -19,3 +19,14 @@ for i in range(m):
     first += n
     last += n
     
+or
+values = input().split()
+m, n = int(values[0]), int(values[1])
+matrix = []
+for i in range(m):
+    row = input().split()
+    for j in row:
+        matrix.append(int(j))
+matrix.sort()
+for i in range(0, len(matrix), n):
+    print(" ".join(str(j) for j in matrix[i:i+n]))
