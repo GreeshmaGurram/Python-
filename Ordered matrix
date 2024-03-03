@@ -1,0 +1,21 @@
+values = input().split()
+m = int(values[0])
+n = int(values[1])
+matrix = []
+for i in range(m):
+    row = input().split()
+    for i in range(n):
+        row[i] = int(row[i])
+    matrix.extend(sorted(row))
+matrix.sort()
+first = 0
+last = n
+
+for i in range(m):
+    r = ""
+    for j in range(first, last):
+        r += (str(matrix[j]) + " ")
+    print(r)
+    first += n
+    last += n
+    
