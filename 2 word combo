@@ -1,0 +1,8 @@
+s = sorted(input().split())
+out = []
+for i in range(len(s)):
+    for j in range(i+1, len(s)):
+        out.append(s[i] + " " + s[j])
+out = sorted(set(out))
+for each in out:
+    print(each)
