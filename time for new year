@@ -1,0 +1,9 @@
+import datetime
+
+s = datetime.datetime.strptime(input(), "%b %d %Y %I:%M %p")
+
+next_year = datetime.datetime(s.year+1, 1, 1, 00, 00)
+s = datetime.datetime(s.year, s.month, s.day, s.hour, s.minute)
+duration = next_year - s
+no_of_days, no_of_hours, no_of_mins = duration.days, duration.seconds // 3600, (duration.seconds // 60) % 60
+print("{} hours {} minutes".format(((no_of_days*24)+no_of_hours), no_of_mins))
