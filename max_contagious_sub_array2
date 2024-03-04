@@ -1,0 +1,20 @@
+s = input().split()
+s = [int(i) for i in s]
+if s[-1] == 0:
+    s.pop()
+if len(s) == 1:
+    print(s[0])
+maxi = sum(s)
+maxi_s = [] 
+
+for i in range(len(s)):
+    r = 0
+    sub = []
+    for j in range(i, len(s)):
+        r = s[j: j+1]
+        sub.append(r[0])
+        if sum(sub) > maxi:
+            maxi = sum(sub)
+            maxi_s = [str(i) for i in sub]
+print(" ".join(maxi_s))
+or
