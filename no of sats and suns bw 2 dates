@@ -1,0 +1,18 @@
+import datetime
+
+d1 = datetime.datetime.strptime(input(), "%d %b %Y")
+d2 =  datetime.datetime.strptime(input(), "%d %b %Y")
+duration = (d2 - d1).days
+sat_c = 0
+sun_c = 0
+for i in range(duration+1):
+    delta = datetime.timedelta(days = i)
+    i = d1 + delta
+    day = i.strftime("%A")
+    if day == "Saturday":
+        sat_c += 1
+    elif day == "Sunday":
+        sun_c += 1
+print("Saturday: {}".format(sat_c))
+print("Sunday: {}".format(sun_c))
+    
