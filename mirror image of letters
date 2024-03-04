@@ -1,0 +1,8 @@
+s = input().split()
+out = []
+for j in s:
+    r = ""
+    for i in j:
+        r += chr(97 + 25 + (97 - ord(i.lower())))
+    out.append(r)
+print(" ".join(out))
