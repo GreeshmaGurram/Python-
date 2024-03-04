@@ -1,0 +1,15 @@
+s1 = input()
+s2 = input()
+r = ""
+if len(s1)>len(s2):
+    length = len(s2)
+    extra = s1[length:]
+else:
+    length = len(s1)
+    extra = s2[length:]
+for i in range(length*2):
+    if int(i/2) < len(s1) and i%2 == 0:
+        r += s1[int(i/2)]
+    elif int(i/2) < len(s2) and i%2 != 0:
+        r += s2[int(i/2)]
+print(r+extra)
