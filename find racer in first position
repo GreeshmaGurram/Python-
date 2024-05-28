@@ -29,3 +29,40 @@ def main():
     print(racers)
     
 main()
+
+variant 2
+input: 5, 5 = m, n
+matrix => 
+1 1 1 1 1
+1 1 1 1 1
+1 0 1 1 0
+0 0 1 0 0 
+0 0 0 0 0
+code:
+def get_matrix(m,n):
+    matrix = []
+    for i in range(m):
+        row = list(map(int, input().split()))
+        matrix.append(row)
+    return matrix
+
+def get_racers_position(row, no_of_racers):
+    racers_list = []
+    for i in range(no_of_racers):
+        if row[i] == 1:
+            racers_list.append(i+1)
+    return racers_list
+
+def get_maximum_distance(matrix, m, n):
+    for i in range(m-1, -1, -1):
+        if matrix[i].count(1) != 0:
+            return get_racers_position(matrix[i], n)
+    return list(range(1, n+1))
+
+def main():
+    m,n = map(int, input().split())
+    matrix = get_matrix(m,n)
+    racers = get_maximum_distance(matrix, m, n)
+    print(racers)
+    
+main()
