@@ -66,3 +66,77 @@ def main():
     print(racers)
     
 main()
+
+
+Variant 3
+input: m, n = 5, 5, output: 3
+matrix =>
+1 1 1 0 0
+1 1 0 0 0
+1 1 1 1 0
+1 1 1 0 0 
+1 1 0 0 0
+code:
+def get_matrix(m,n):
+    matrix = []
+    for i in range(m):
+        row = list(map(int, input().split()))
+        matrix.append(row)
+    return matrix
+
+def get_racers_position(row, no_of_racers):
+    racers_list = []
+    for i in range(no_of_racers):
+        if row[i] == 1:
+            racers_list.append(i+1)
+    return racers_list
+
+def get_maximum_distance(matrix, m, n):
+    for i in range(n-1, -1, -1):
+        row = []
+        for j in range(m):
+            row.append(matrix[j][i])
+        if row.count(1) != 0:
+            return get_racers_position(row, m)
+    return list(range(1, n+1))
+
+def main():
+    m,n = map(int, input().split())
+    matrix = get_matrix(m,n)
+    racers = get_maximum_distance(matrix, m, n)
+    print(racers)
+    
+main()
+
+or 
+code2:
+def get_matrix(m,n):
+    matrix = []
+    for i in range(m):
+        row = list(map(int, input().split()))
+        matrix.append(row)
+    return matrix
+
+def get_racers_position(row, no_of_racers):
+    max_distance = max(row)
+    racers_list = []
+    for i in range(no_of_racers):
+        if row[i] == max_distance:
+            racers_list.append(i+1)
+    return racers_list
+
+def get_maximum_distance(matrix, m, n):
+    sum_of_each_row = []
+    for i in range(m):
+        sum_of_each_row.append(sum(matrix[i]))
+    if sum_of_each_row.count(0) != m:
+        return get_racers_position(sum_of_each_row, m)
+    return list(range(1, m+1))
+
+def main():
+    m,n = map(int, input().split())
+    matrix = get_matrix(m,n)
+    racers = get_maximum_distance(matrix, m, n)
+    print(racers)
+    
+main()
