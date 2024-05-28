@@ -1,0 +1,27 @@
+input: S = PROBLEMSONE, N = 3, output = PLORBESNOME
+approach: PROBLEMSONE => positions => [1,2,3,2,1,2,3,2,1,2,3]
+
+code:
+def get_positions(pattern, word):
+    no_of_repetitions = len(word) // len(pattern)
+    extra = len(word) % len(pattern)
+    positions = pattern * no_of_repetitions + pattern[: extra]
+    return positions
+    
+def get_output(positions, word, n):
+    new_word = ""
+    for i in range(1,n+1):
+        for j in range(len(word)):
+            if positions[j] == i:
+                new_word += word[j]
+    return new_word
+    
+def main():
+    input_str = input()
+    n = int(input())
+    pattern = list(range(1, n+1)) + list(range(n-1, 1, -1))
+    positions = get_positions(pattern, input_str)
+    new_word = get_output(positions, input_str, n)
+    print(new_word)
+
+main()
