@@ -1,0 +1,53 @@
+input: 
+4 5 2 1 
+1 1 1 1 1 
+-1 -1 1 1 -1
+1 1 1 1 1 
+-1 -1 -1 -1 -1
+output:
+[[0, 12], [3, 10], [-1, -1], [-1, -1], [-1, -1]]
+
+code:
+grid = []
+
+def read_grid(no_of_rows, no_of_cols):
+    for i in range(no_of_rows):
+        row = list(map(int, input().split()))
+        grid.append(row)
+
+def get_adjacent_column_values(current_row, current_col):
+    if grid[current_row][current_col] == 1:
+        return current_col + 1 
+    return current_col - 1 
+
+def get_next_position_values(current_row, current_col, adj_col):
+    if adj_col >= 0 and adj_col < no_of_cols:
+        if grid[current_row][current_col] == grid[current_row][adj_col]:
+            return current_row + 1, adj_col
+    return current_row, current_col
+
+def get_exit_point(grid, no_of_rows, current_col):
+    current_row = 0
+    extra_time = 1
+    while current_row < no_of_rows:
+        adj_col = get_adjacent_column_values(current_row, current_col)
+        next_row, next_col = get_next_position_values(current_row, current_col, adj_col)
+        if next_row == current_row:
+            return -1, -1
+        if 0 <= next_row < no_of_rows:
+            if grid[current_row][current_col] != grid[next_row][next_col]:
+                extra_time += y
+        current_row += 1 
+        current_col = next_col
+    return next_col, (extra_time + (no_of_rows * x))
+
+def main():
+    global grid, no_of_rows, no_of_cols, x, y
+    no_of_rows, no_of_cols, x, y = map(int, input().split())
+    read_grid(no_of_rows, no_of_cols)
+    exit_points_list= []
+    for entry_point in range(no_of_cols):
+        exit_point, time_taken = get_exit_point(grid, no_of_rows, entry_point)
+        exit_points_list.append([exit_point, time_taken])
+    print(exit_points_list)
+main()
