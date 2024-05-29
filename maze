@@ -1,0 +1,90 @@
+input: no_of_rows = 4, no_of_entry_points_into_the_maze = 5
+1=> diagonal in matrix cell from top left to bottom right, -1 => diagonal in matrix cell from top right to bottom left
+1 1 1 1 1 
+-1 -1 -1 -1 -1
+1 1 1 -1 1 
+-1 -1 -1 -1 -1
+output: exit points for each entry point: [0, 1, -1, -1, -1]
+code: Approach 1
+grid = []
+
+def read_grid(no_of_rows, no_of_cols):
+    for i in range(no_of_rows):
+        row = list(map(int, input().split()))
+        grid.append(row)
+
+def get_adjacent_column_values(current_row, current_col):
+    if grid[current_row][current_col] == 1:
+        return current_col + 1 
+    return current_col - 1 
+
+def is_adjacent_cell_valid(adj_col):
+    return adj_col >= 0 and adj_col < no_of_cols
+
+def is_adjacent_cell_value_same(current_row, current_col, adj_col):
+    return grid[current_row][current_col] == grid[current_row][adj_col]
+
+def get_exit_point(grid, no_of_rows, current_col):
+    current_row = 0
+    while current_row < no_of_rows:
+        adj_col = get_adjacent_column_values(current_row, current_col)
+        if is_adjacent_cell_valid(adj_col):
+            if is_adjacent_cell_value_same(current_row, current_col, adj_col):
+                current_row += 1
+                current_col = adj_col
+            else:
+                return -1
+        else:
+            return -1
+    return current_col
+
+def main():
+    global grid, no_of_rows, no_of_cols
+    no_of_rows, no_of_cols = map(int, input().split())
+    read_grid(no_of_rows, no_of_cols)
+    exit_points_list= []
+    for entry_point in range(no_of_cols):
+        exit_point = get_exit_point(grid, no_of_rows, entry_point)
+        exit_points_list.append(exit_point)
+    print(exit_points_list)
+main()
+
+code: approach2: small tweek
+grid = []
+
+def read_grid(no_of_rows, no_of_cols):
+    for i in range(no_of_rows):
+        row = list(map(int, input().split()))
+        grid.append(row)
+
+def get_adjacent_column_values(current_row, current_col):
+    if grid[current_row][current_col] == 1:
+        return current_col + 1 
+    return current_col - 1 
+
+def get_next_position_values(current_row, current_col, adj_col):
+    if adj_col >= 0 and adj_col < no_of_cols:
+        if grid[current_row][current_col] == grid[current_row][adj_col]:
+            return current_row + 1, adj_col
+    return current_row, current_col
+
+def get_exit_point(grid, no_of_rows, current_col):
+    current_row = 0
+    while current_row < no_of_rows:
+        adj_col = get_adjacent_column_values(current_row, current_col)
+        next_row, current_col = get_next_position_values(current_row, current_col, adj_col)
+        if next_row == current_row:
+            return -1
+        current_row += 1 
+    return current_col
+
+def main():
+    global grid, no_of_rows, no_of_cols
+    no_of_rows, no_of_cols = map(int, input().split())
+    read_grid(no_of_rows, no_of_cols)
+    exit_points_list= []
+    for entry_point in range(no_of_cols):
+        exit_point = get_exit_point(grid, no_of_rows, entry_point)
+        exit_points_list.append(exit_point)
+    print(exit_points_list)
+main()
