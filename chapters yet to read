@@ -1,0 +1,32 @@
+input:
+4
+1 4
+5 7
+9 16
+17 26
+7
+output: 3
+
+code:
+def read_start_end_pages(no_of_chapters):
+    start_end_pages_list = []
+    for each_chapter in range(no_of_chapters):
+        start_page, end_page = map(int, input().split())
+        start_end_pages_list.append([start_page, end_page])
+    return start_end_pages_list
+
+def get_current_chapter(no_of_chapters, start_end_pages_list, current_page):
+    for chapter_index in range(len(start_end_pages_list)):
+        start_page, end_page = start_end_pages_list[chapter_index]
+        if start_page <= current_page <= end_page:
+            return chapter_index + 1
+
+def main():
+    no_of_chapters = int(input())
+    start_end_pages_list = read_start_end_pages(no_of_chapters)
+    current_page = int(input())
+    current_chapter = get_current_chapter(no_of_chapters, start_end_pages_list, current_page)
+    chapters_yet_to_read = no_of_chapters - current_chapter + 1
+    print(chapters_yet_to_read)
+
+main()
