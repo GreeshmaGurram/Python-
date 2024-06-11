@@ -1,0 +1,182 @@
+1. Arrow shape
+Code: 
+n = int(input())
+number_of_spaces = 0
+for i in range((n*2)-1):
+    if i == 0 or i == ((n*2) - 2):
+        print("*")
+    elif i == n-1:
+        print("* " * n)
+    elif i < n-1:
+        spaces = " " * number_of_spaces
+        pattern = "* " + spaces + "* "
+        print(pattern)
+        number_of_spaces += 2
+    else:
+        number_of_spaces -= 2
+        spaces = " " * number_of_spaces
+        pattern = "* " + spaces + "* "
+        print(pattern)
+
+
+2. Inverted Arrow Shape
+Code:
+n = int(input())
+
+number_of_spaces = 0
+for i in range((n*2)-1):
+    if i == 0 or i == ((n*2)-2):
+        print("  " * (n-1) + "* ")
+    elif i == n-1:
+        print("* " * n)
+    elif i < n-1:
+        outer_spaces = "  " * (n-i-1)
+        inner_spaces = " " * number_of_spaces
+        pattern = outer_spaces + "* " + inner_spaces + "* " 
+        print(pattern)
+        number_of_spaces += 2
+    else:
+        number_of_spaces -= 2 
+        outer_spaces = "  " * (i-n+1)
+        inner_spaces = " " * number_of_spaces
+        pattern = outer_spaces + "* " + inner_spaces + "* "
+        print(pattern)
+
+
+3. hallow arrow shape
+Code: 
+n = int(input())
+number_of_spaces = 0
+for i in range((n*2)-1):
+    if i == 0 or i == ((n*2)-2):
+        print("*")
+    elif i < n-1:
+        inner_spaces = " " * number_of_spaces
+        pattern = "* "  + inner_spaces + "* "
+        print(pattern)
+        number_of_spaces += 2
+    elif i == n-1:
+        inner_spaces = " " * number_of_spaces
+        pattern = "* " + inner_spaces + "* "
+        print(pattern)
+    else:
+        number_of_spaces -= 2
+        inner_spaces = " " * number_of_spaces
+        pattern = "* " + inner_spaces + "* "
+        print(pattern)
+
+4. hallow inverted arrow shape
+Code:
+n = int(input())
+number_of_spaces = 0
+
+for i in range((n*2)-1):
+    if i == 0 or i == ((n*2)-2):
+        print("  " * (n-1) + "*")
+    elif i == n-1:
+        inner_spaces = " " * number_of_spaces
+        pattern = "* " + inner_spaces + "* "
+        print(pattern)
+    elif i < n-1:
+        outer_spaces = "  " * (n-i-1)
+        inner_spaces = " " * number_of_spaces
+        pattern = outer_spaces + "* " + inner_spaces + "* "
+        print(pattern)
+        number_of_spaces += 2
+    else:
+        number_of_spaces -= 2
+        outer_spaces = "  " * (i-n+1)
+        inner_spaces = " " * number_of_spaces
+        pattern = outer_spaces + "* " + inner_spaces + "* "
+        print(pattern)
+
+  5. No of chapters left
+  Code:
+  n = int(input())
+start_end_pages_list = []
+for i in range(n):
+    row = list(map(int, input().split()))
+    start_end_pages_list.append(row)
+current_page = int(input())
+current_chapter = 0
+for i in range(len(start_end_pages_list)):
+    if start_end_pages_list[i][0] <= current_page <= start_end_pages_list[i][1]:
+        current_chapter = i
+        break
+number_of_chapters_left = n - current_chapter
+print(number_of_chapters_left)
+        
+
+
+5. No_of_days
+Code: 
+import math
+n = int(input())
+start_end_segments = []
+for i in range(n):
+    row = list(map(int, input().split()))
+    start_end_segments.append(row)
+    
+mins_edited_everyday = int(input())
+total_mins = 0
+for i in start_end_segments:
+    total_mins += (i[1] - i[0] + 1)
+    or
+for i, j in start_end_segments:
+    total_mins += (j - i + 1)
+
+print(math.ceil(total_mins/mins_edited_everyday))or
+print(-(-total_mins//mins_edited_everyday)) ==> negating the negative quotient which gives the floor division, so on negating the floor gives ceil
+
+6. String Comparison
+Code:
+w1 = input().lower()
+w2 = input().lower()
+no_of_letters_different = 0
+for i in set(w1):
+    if w1.count(i) != w2.count(i):
+        no_of_letters_different += (abs(w1.count(i) - w2.count(i)))
+
+for i in set(w2):
+    if i not in w1:
+        no_of_letters_different += w2.count(i)
+
+if(no_of_letters_different != 0):
+    print(no_of_letters_different)
+else:
+    print(len(w1))
+    or 
+w1 = input().lower()
+w2 = input().lower()
+listed_w1 = list(w1)
+listed_w2 = list(w2)
+for i in w1:
+    if i in listed_w2:
+        listed_w1.remove(i)
+        listed_w2.remove(i)
+
+if len(listed_w2) == 0:
+    print(len(w1))
+else:
+    print(len(listed_w1) + len(listed_w2))
+
+
+w1 = input().lower()
+w2 = input().lower()
+output = ''
+listed_w1 = list(w1)
+listed_w2 = list(w2)
+for i in w1:
+    if i in listed_w2:
+        listed_w1.remove(i)
+        listed_w2.remove(i)
+
+if len(listed_w2) == 0: 
+    print(len(w1))
+else:
+    out = sorted(listed_w1 + listed_w2)
+    // for i in out:
+       // output += i
+    //print(output)
+or print("".join(out))
+        
