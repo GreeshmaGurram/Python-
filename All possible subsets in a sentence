@@ -1,0 +1,44 @@
+def generate_combos(words):
+    combinations = []
+    words_combo = []
+    
+    for i in range(len(words)):
+        combinations.append([i])
+        words_combo.append(words[i])
+    words_combo = sorted(set(words_combo))
+    for word in words_combo:
+        print(word)
+    words_combo = []
+    iteration = 0
+    while iteration < len(words):
+        new_combinations = []
+        combo = []
+        for combination in combinations:
+            for i in range(combination[-1]+1, len(words)):
+                new_combination = combination.copy()
+                new_combination.append(i)
+                new_combinations.append(new_combination)
+        
+        combinations = new_combinations
+        
+        for combination in combinations:
+            new_combo = []
+            for index in combination:
+                new_combo.append(words[index])
+            combo.append(tuple(new_combo))
+        
+        combo = sorted(set(combo))
+        for c in combo:
+            words_combo.append(c)
+        
+        iteration += 1 
+    
+    for word in words_combo:
+        print(' '.join(word))
+        
+words = sorted(input().split())
+all_word_combos = generate_combos(words)
+        
+        
+        
+        
