@@ -1,5 +1,6 @@
 def generate_n_word_combinations(words, n):
     combinations = []
+    words_combo = set()
     for i in range(len(words)):
         combinations.append([i])
     iterations = 0
@@ -17,7 +18,10 @@ def generate_n_word_combinations(words, n):
         sub_string = []
         for index in combination:
             sub_string.append(words[index])
-        print(' '.join(sub_string))
+        words_combo.add(tuple(sub_string))
+    
+    for combo in sorted(words_combo):
+        print(' '.join(combo))
             
             
 words = sorted(input().split())
