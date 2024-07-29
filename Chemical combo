@@ -1,0 +1,17 @@
+imput = 'HHOOOCHHH'
+output = 'H2+O3+C+H3'
+
+symbols = input()
+equation = ''
+count = 1
+for i in range(len(symbols)):
+    if i < (len(symbols) - 1) and (symbols[i] == symbols[i+1]):
+        count += 1
+    else:
+        if count != 1:
+            equation += symbols[i] + str(count) + '+'
+        else:
+            equation += symbols[i] + '+'
+        count = 1
+
+print(equation.strip('+'))
