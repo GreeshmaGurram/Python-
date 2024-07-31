@@ -1,0 +1,24 @@
+Bubble Sort
+Code:
+ n = int(input().strip())
+
+    a = list(map(int, input().rstrip().split()))
+
+    # Write your code here
+
+num_of_swaps = 0
+for i in range(len(a)):
+    for j in range(i, len(a)):
+        if i < (len(a)-1) and a[i] > a[j]:
+            a[i], a[j] = a[j], a[i]
+            num_of_swaps += 1
+
+print('Array is sorted in {} swaps.'.format(num_of_swaps))
+print('First Element: ' + str(a[0]))
+print('Last Element: ' + str(a[-1]))
+
+
+to sort a nested list based on an element in the nested list
+nested_list_name.sort(key=lambda x: x[1]) => sort based on element in index 1 in the nested list
+Ex: students = [['G', 9], ['V', 8]] => students.sort(key=lambda x: x[1]) => sort based on scores => out: [['V', 8], ['G', 9]]
+print('{:.2f}'.format(out)) => .2f says that the number of float type with 2 numbers after decimal point have to be printed as out
