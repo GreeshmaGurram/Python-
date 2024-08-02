@@ -1,0 +1,71 @@
+Assertion Error: In Python, occurs when statement fails i.e., Actually the statement is meant to be true but if it's false, then assertion error is raised
+Ex: need to pass array with 2 i/ps which are of min val i.e., [3,4,3] but if I pass [3,4,4] assertion erro is raised. min val 3 should be repeated twice or more times
+
+Bitwise and operator = '&' => 4 & 5 ==> 100 & 101 = 100 => out = 4
+
+In Python 3.10 =>  match is intoduced which works as switch
+Ex:
+arr =[]
+for i in range(N):
+    commands = input().split(' ')
+    
+    match commands[0]:
+        case 'insert':
+            arr.insert(int(commands[1]), int(commands[2]))
+        case 'print':
+            print(arr)
+        case 'remove':
+            arr.remove(int(commands[1]))
+        case 'append':
+            arr.append(int(commands[1]))
+        case 'sort':
+            arr.sort()
+        case 'pop':
+            arr.pop()
+        case 'reverse':
+            arr.reverse()
+        case _:
+            'default case'
+
+any() => return true if any of the iterable statisfies the given condition
+Ex:
+numbers = [-1, -2, -3, -4, 5]
+
+# Check if there is any positive number in the list
+result = any(num > 0 for num in numbers)
+print(result)  # Output: True
+
+'\n'.join(arr) => to print every element in arr of string type in a new line
+
+CO: Door mat question
+Code:
+n, m = map(int, input().split(' '))
+no_of_times = 0
+for i in range(1, n+1):
+    if i == (n+1)//2:
+        print('WELCOME'.center(m, '-'))
+    elif i < (n+1)//2:
+        no_of_times = i+i-1
+        pattern = '.|.' * (i+i-1)
+        print(pattern.center(m, '-'))
+    elif i > (n+1)//2:
+        pattern = '.|.' * no_of_times
+        print(pattern.center(m, '-'))
+        no_of_times -= 2
+
+
+CQ: Formatted numbers: Ex for rjust
+Code:
+def print_formatted(number):
+    # your code goes here
+    width = len(bin(number)[2:].upper())
+    for i in range(1, number+1):
+        decimal  = str(i)
+        octal = str(oct(i)[2:].upper())
+        hexa = str(hex(i)[2:].upper())
+        binary = str(bin(i)[2:].upper())
+        decimal_adj = decimal.rjust(width, ' ')
+        octal_adj = octal.rjust(width, ' ')
+        hexa_adj = hexa.rjust(width, ' ')
+        binary_adj = binary.rjust(width, ' ')
+        print(decimal_adj + " " + octal_adj + " "+ hexa_adj + " " + binary_adj)
