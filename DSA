@@ -1,0 +1,128 @@
+# default print functionality => print('name', end="\n") => but print('name', end="") => doesn't move the cursor to a new line
+
+
+Binary Search:
+Code: using while
+def binary_search(arr, k, n):
+    low = 0
+    up = n - 1
+    while low <= up:
+        mid = (low+up)//2
+        if arr[mid] == k:
+            return mid
+        elif arr[mid] < k:
+            low = mid + 1
+        else:
+            up = mid - 1
+    return -1
+    
+n = int(input())
+arr = list(map(int, input().split(' ')))
+k = int(input())
+
+result = binary_search(arr, k, n)
+print(result)
+# or using recursion
+Code:
+def get_index(arr, k, low, high):
+    if low > high:
+        return -1
+    mid = (low+high) // 2
+    if arr[mid] == k:
+        return mid
+    elif arr[mid] > k:
+        high = mid - 1
+        return get_index(arr, k, low, high)
+    else:
+        low = mid + 1
+        return get_index(arr, k, low, high)
+
+CQ: min and max values of a left shifted array
+Code:
+# n = int(input())
+# arr = list(map(int, input().split(' ')))
+# mini = min(arr)
+# maxi = max(arr)
+# print(str(mini) + " " + str(maxi))
+
+# or 
+
+# def get_index_of_lowest_num(arr, k):
+#     lowest_num = arr[0]
+#     lowest_num_index = 0
+#     for i in range(k):
+#         if arr[i] < lowest_num:
+#             lowest_num = arr[i]
+#             lowest_num_index = i
+#     return lowest_num_index
+
+# n = int(input())
+# arr = list(map(int, input().split(' ')))
+# lowest_index = get_index_of_lowest_num(arr, n)
+# actual_arr = arr[lowest_index:] + arr[0:lowest_index]
+# print(str(actual_arr[0]) + " " + str(actual_arr[-1]))
+
+# or
+# as the arr is shifted the lowest and highest vals in the arr are side by side
+# i.e., ...arr, max, min, arr... Ex: [5, 6, 1, 2, 3, 4]
+def get_lowest_element_index(arr, n, low, high):
+    if low > high:
+        return 0
+    mid = (low+high) // 2
+    if (mid < n-1) and (arr[mid] > arr[mid+1]):
+        return mid+1
+    elif (arr[low] <= arr[mid]):
+        return get_lowest_element_index(arr, n, mid + 1, high)
+    else:
+        return get_lowest_element_index(arr, n, low, mid-1)
+
+n = int(input())
+arr = list(map(int, input().split(' ')))
+lowest_index = get_lowest_element_index(arr, n, 0, n-1)
+print(str(arr[lowest_index]) + " " + str(arr[lowest_index-1]))
+
+CQ: Find Peak Element in an Array
+Approach 1:
+n = int(input())
+arr = list(map(int, input().strip().split(' ')))
+
+out = 0
+for each in range(0, n):
+    if (each != 0 and each != n-1) and arr[each-1] < arr[each] > arr[each+1]:
+        out = each
+        print(each)
+        break
+    elif (each == 0) and (arr[each+1] < arr[each]):
+        out = each
+        print(each)
+        break
+    elif (each == n-1) and (arr[each-1] < arr[each]):
+        out = each
+        print(each)
+        break
+
+Approach 2: (using binary_search)
+def get_peak_index(arr, n, low, high):
+    if low > high:
+        return 0
+    mid = (low+high)//2
+    if (mid != 0 and mid != n-1):
+        if (arr[mid-1] < arr[mid] > arr[mid+1]):
+            return mid
+        elif (arr[mid] > arr[mid-1]):
+            return get_peak_index(arr, n, mid+1, high)
+        else:
+            return get_peak_index(arr, n, low, mid-1)
+    elif (mid == 0) and (arr[mid] > arr[mid+1]):
+        return mid
+    elif (mid == n-1) and (arr[mid] > arr[mid-1]):
+        return mid
+or 
+def get_peak_index(arr, low, high):
+    if low >= high:
+        return low
+    mid = (low+high)//2
+    if arr[mid] > arr[mid+1]:
+        return get_peak_index(arr, low, mid)
+    else:
+        return get_peak_index(arr, mid+1, high)
