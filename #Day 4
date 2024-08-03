@@ -1,0 +1,76 @@
+# prime numbers: no need to check if n%i == 0 till n, enough till i = n**(1/2) 
+=> if n is not even, n = a * b, So a or b should be <= n**(1/2), if not a * b > n**(1/2) * n**(1/2)  => a*b != n instead a*b > n
+
+CQ: Minion Game
+Input: BANANA
+Output: Stuart 12
+Code:
+def minion_game(string):
+    # your code goes here
+    vowels = 'AEIOU'
+    kevin_score = 0
+    stuart_score = 0
+    
+    for i in range(len(string)):
+        if string[i] in vowels:
+            kevin_score += len(string) - i
+        else:
+            stuart_score += len(string) - i
+
+    if kevin_score > stuart_score:
+        print("Kevin", kevin_score)
+    elif stuart_score > kevin_score:
+        print("Stuart", stuart_score)
+    else:
+        print("Draw")
+    
+CQ: merge_tools
+I/p: AABCAAADA 3
+o/p: AB
+CA
+AD
+Code:
+def merge_the_tools(string, k):
+    # your code goes here
+    # start_index = 0
+    # for i in range(k, len(string)+1, k):
+    #     sub = string[start_index: i]
+    #     start_index = i
+    #     out = ''
+    #     for i in sub:
+    #         if i not in out:
+    #             out += i
+    #     print(out)
+    # or
+    for i in range(0, len(string), k):
+        sub = string[i: i+k]
+        out = ''
+        for j in sub:
+            if j not in out:
+                out+=j        
+        print(out)
+
+CQ: Triangle
+Input: 5
+Out:
+1
+121
+12321
+1234321
+123454321
+Code:
+for rows in range(1,int(input())+1): 
+    print(((10**rows)//9)**2)
+
+
+CQ: Triangle pattern 2
+Input: 5
+Output:
+1
+22
+333
+4444
+55555
+Code:
+for i in range(1,int(input())): #More than 2 lines will result in 0 score. Do not leave a blank line also
+    print(i*((10**i)//9))
