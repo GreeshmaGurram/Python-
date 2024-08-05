@@ -126,3 +126,19 @@ def get_peak_index(arr, low, high):
         return get_peak_index(arr, low, mid)
     else:
         return get_peak_index(arr, mid+1, high)
+
+
+CQ: find pair with desired sum: 2 pointer method
+Code:
+def find_sum_pair(arr, k, n):
+    left_pointer = 0
+    right_pointer = n-1
+    while left_pointer < right_pointer:
+        if arr[left_pointer] + arr[right_pointer] == k:
+            print(left_pointer, right_pointer, sep=" ")
+            return
+        elif arr[left_pointer] + arr[right_pointer] > k:
+            right_pointer -= 1
+        else:
+            left_pointer += 1
+    print(-1)
