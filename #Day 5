@@ -42,3 +42,60 @@ for i in range(n):
 print(sum_out/n)
 
 * rsplit(sep, no_ofsplits) => split string from right => ex: 'BANANA FRIES 20' => rsplit(' ', 1) => 'BANANA FRIES' '20'
+
+CQ: right shift array
+Code:
+def right_shift_arr(arr, k, n):
+    start = current = count = 0
+    while count < n:
+        current, prev = start, arr[start]
+        while True:
+            next_index = (current+k)%n
+            arr[next_index], prev = prev, arr[next_index]
+            current = next_index
+            count += 1
+            if start == current:
+                break
+        start += 1
+    for i in arr:
+        print(i, end = ' ')
+
+* in python 1.0 == 1
+
+CQ: Min number of books a day
+Code:
+def possible(k, arr, days):
+    total_sum = 0
+    for i in arr:
+        total_sum += ((i-1)//k) + 1
+    if total_sum <= days:
+        return True
+    return False
+def min_num_of_books(arr, n):
+    low, high = 1, int(1e9)
+    while low<high:
+        mid = (low+high)//2
+        if possible(mid, arr, n):
+            high = mid
+        else:
+            low = mid+1
+    return low
+
+CQ: Find if min number whose sum of quotients when divided with the els in array is <= S(given as input)
+Code:
+def find_max_x(arr, s):
+    def possible(k):
+        sum_of_quotients = 0
+        for i in arr:
+            sum_of_quotients += (i//k)
+        if sum_of_quotients <= s:
+            return True
+        return False
+    low, high = 1, max(arr)+1
+    while low<high:
+        mid = (low+high)//2
+        if not possible(mid):
+            low = mid+1
+        else:
+            high = mid
+    return low
