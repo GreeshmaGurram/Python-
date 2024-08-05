@@ -1,0 +1,44 @@
+In Python: * is used as spread operator Ex: l = [1, 2, 3], print(*l) Output: '1 2 3'
+Input: 5 2
+a
+a
+b
+a
+b
+a
+b
+out: 
+1 2 4
+3 5
+CQ:
+from collections import defaultdict
+import sys
+
+d = defaultdict(list)
+n,m = list(map(int, input().split(' ')))
+
+for i in range(1, n+1):
+    d[input().strip()].append(i)
+    
+for i in range(m):
+    l = d[input().strip()]
+    if l: print(*l)
+    else: print(-1)
+
+* namedtuple
+Code: from collections import namedtuple
+
+n = int(input())
+col_names_input = input().strip().split()
+col_names = ','.join(col_names_input)
+student = namedtuple('student', col_names)
+
+sum_out = 0
+for i in range(n):
+    stu = input().split()
+    stud = student(*stu)
+    sum_out += int(stud.MARKS)
+
+print(sum_out/n)
+
+* rsplit(sep, no_ofsplits) => split string from right => ex: 'BANANA FRIES 20' => rsplit(' ', 1) => 'BANANA FRIES' '20'
